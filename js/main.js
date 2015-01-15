@@ -37,8 +37,40 @@ $(document).ready(function() {
 		}
 	});
 
+	//Edit a todo
+	$('#todos').on('click', '#todo-link', function() {
+		localStorage.setItem('currentTodoName',$(this).data('todo-name'));
+		localStorage.setItem('currentTodoDate',$(this).data('todo-date'));
+	});
+
+	$(document).on('pageshow','#edit',function(){
+		var currentTodoName = localStorage.getItem('currentTodoName');
+		var currentTodoDate = localStorage.getItem('currentTodoDate');
+		$('#edit-form input[name=todo-name]',this).val(currentTodoName);
+		$('#edit-form input[name=todo-date]',this).val(currentTodoDate);
+	});
+
 	//Delete all todos
 	$('#clear-btn').click(function() {
 		localStorage.clear();
+	});
+
+	//Delete a todo
+	$('#edit-form').on('click', '#delete', function() {
+		var currentTodoName = localStorage.getItem('currentTodoName');
+		var currentTodoDate = localStorage.getItem('currentTodoDate');
+
+		for(var i=0; i < todoList.length; i++){
+			if(todoList[i].todoName == currentTodoName){
+				todoList.splice(i,1);
+			}
+			localStorage.setItem('todos',JSON.stringify(todoList));
+		}	
+		//Close and go home
+		$.mobile.changePage($('#home'),'pop');
+	});
+
+	$(document).on('pageshow','#home',function(){
+		window.location.reload();
 	});
 });

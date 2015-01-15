@@ -36,4 +36,9 @@ $(document).ready(function() {
 			localStorage.setItem('todos', JSON.stringify(todos));
 		}
 	});
+
+	//Delete all todos
+	$('#clear-btn').click(function() {
+		localStorage.clear();
+	});
 });

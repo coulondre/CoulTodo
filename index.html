@@ -16,7 +16,7 @@
     <script id="mobile-datepicker" src="http://cdn.rawgit.com/arschmitz/jquery-mobile-datepicker-wrapper/v0.1.1/jquery.mobile.datepicker.js"></script>
   </head>
   <body>
-  <!-- Home page -->
+    <!-- Home page -->
     <div data-role="page" id="home">
       <header data-role="header">
         <h1>Coultodo</h1>
@@ -28,7 +28,7 @@
         </ul>
       </main>
       <footer data-role="footer" id="footer">
-        <h4>Coulmobtodo &copy; 2015</h4>
+        <h4>Coultodo &copy; 2015</h4>
       </footer>
     </div>
 
@@ -50,17 +50,17 @@
       </footer>
     </div>
 
-      <!-- Edit Page -->
+    <!-- Edit Page -->
     <div data-role="page" id="edit">
       <header data-role="header">
         <a href="index.html" id="cancel-btn" data-icon="delete">Cancel</a>
         <h1>Edit Todo</h1>
-        <a href="index.html" data-icon="check" data-theme="b" onclick="$('edit-form').submit();">Save</a>
+        <a href="index.html" data-icon="check" data-theme="b" onclick="$('#edit-form').submit();">Save</a>
       </header>
       <main data-role="content" id="content">
         <form id="edit-form">
-          <input type="text" name="todo-name" id="todo-name" placeholder="Add Todo Name">
-          <input type="text" name="todo-date" id="todo-date" data-role="date">
+          <input type="text" name="todo-name" id="todo-name-edit" placeholder="Add Todo Name">
+          <input type="text" name="todo-date" id="todo-date-edit" data-role="date">
           <a href="#" id="delete" data-role="button">Delete</a>
         </form>
       </main>

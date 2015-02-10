@@ -37,12 +37,42 @@ $(document).ready(function() {
 		}
 	});
 
-	//Edit a todo
+	//Edit Todo
+	$('#edit-form').submit(function(){
+		console.log("prout");
+		currentTodoName = localStorage.getItem('currentTodoName');
+		currentTodoDate = localStorage.getItem('currentTodoDate');
+		//Loop through todos
+		for(var i=0; i < todoList.length; i++){
+			if(todoList[i].todoName == currentTodoName){
+				todoList.splice(i,1);
+			}
+			localStorage.setItem('todos',JSON.stringify(todoList));
+		}	
+		
+		//Create a new todo
+		var todoNameEdit = $('#todo-name-edit').val();
+		var todoDateEdit = $('#todo-date-edit').val();
+		
+		var todos = JSON.parse(localStorage.getItem('todos'));
+		
+		//Create array with new values
+		var update_todo = {
+			"todoName": todoNameEdit,
+			"todoDate": todoDateEdit
+		};
+		
+		todos.push(update_todo);
+		localStorage.setItem('todos',JSON.stringify(todos));
+	});
+
+	//Access a todo
 	$('#todos').on('click', '#todo-link', function() {
 		localStorage.setItem('currentTodoName',$(this).data('todo-name'));
 		localStorage.setItem('currentTodoDate',$(this).data('todo-date'));
 	});
 
+	//Insert current data into edit form
 	$(document).on('pageshow','#edit',function(){
 		var currentTodoName = localStorage.getItem('currentTodoName');
 		var currentTodoDate = localStorage.getItem('currentTodoDate');
